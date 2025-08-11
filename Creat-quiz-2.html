@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Quiz - Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --dark-bg: #1a1a2e;
+    --dark-card: #202038;
+    --dark-text: #e0e0e0;
+    --dark-text-light: #a0a0a0;
+    --purple: #8e44ad;
+    --purple-light: #9b59b6;
+    --orange: #f39c12;
+    --green: #2ecc71;
+    --red: #e74c3c;
+    --light-border: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.create-quiz-container {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-btn {
+    color: var(--dark-text);
+    font-size: 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.header-text h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-text p {
+    font-size: 14px;
+    color: var(--dark-text-light);
+}
+
+.header-right button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.save-draft-btn {
+    background-color: var(--dark-card);
+    color: var(--purple-light);
+    border: 1px solid var(--purple-light);
+    margin-right: 10px;
+}
+
+.preview-btn {
+    background-color: var(--purple);
+    color: #fff;
+}
+
+/* Main Form Content */
+.quiz-questions-content {
+    margin-bottom: 30px;
+}
+
+.form-card {
+    background-color: var(--dark-card);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.card-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--light-border);
+    padding-bottom: 15px;
+}
+
+.card-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card-header p {
+    font-size: 12px;
+    color: var(--dark-text-light);
+}
+
+.question-card {
+    background-color: var(--dark-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.question-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.points-input {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--dark-text-light);
+    font-size: 14px;
+}
+
+.points-input input {
+    width: 50px;
+    padding: 8px;
+    background-color: var(--dark-card);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    color: var(--dark-text);
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.points-input input::-webkit-inner-spin-button, 
+.points-input input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: none;
+    padding: 8px 30px 8px 15px;
+    background-color: var(--dark-card);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    color: var(--dark-text);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.select-wrapper i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dark-text);
+    pointer-events: none;
+}
+
+.delete-question-btn {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--dark-text-light);
+    margin-bottom: 8px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--dark-card);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    color: var(--dark-text);
+    font-size: 14px;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Answer Options */
+.answer-options-section label {
+    font-weight: 500;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+}
+
+.answer-option {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-card);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.answer-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--dark-text-light);
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.answer-option input[type="radio"]:checked {
+    border-color: var(--purple);
+}
+
+.answer-option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--purple);
+    border-radius: 50%;
+}
+
+.answer-option label {
+    flex: 1;
+    font-size: 14px;
+    color: var(--dark-text);
+    margin: 0;
+}
+
+.add-question-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-question-btn {
+    background-color: var(--dark-bg);
+    color: var(--purple-light);
+    border: 1px dashed var(--purple-light);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 auto;
+}
+
+/* Footer Navigation */
+.quiz-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.prev-btn {
+    background-color: var(--dark-card);
+    color: var(--purple-light);
+}
+
+.next-btn {
+    background-color: var(--purple);
+    color: #fff;
+}
+</style>
+<body>
+    <div class="create-quiz-container">
+        <header class="quiz-header">
+            <div class="header-left">
+                <a href="#" class="back-btn"><i class="ri-arrow-left-line"></i></a>
+                <div class="header-text">
+                    <h1>Create New Quiz</h1>
+                    <p>Add questions, set answers and configure quiz settings</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="save-draft-btn">Save Draft</button>
+                <button class="preview-btn">Preview</button>
+            </div>
+        </header>
+
+        <main class="quiz-questions-content">
+            <div class="form-card quiz-questions">
+                <div class="card-header">
+                    <h2>Quiz Questions</h2>
+                    <p>Create and manage your quiz questions</p>
+                </div>
+
+                <div class="question-card" data-question-id="1">
+                    <div class="question-header">
+                        <h3>Question 1</h3>
+                        <div class="header-controls">
+                            <div class="points-input">
+                                <label for="points-1">Points:</label>
+                                <input type="number" id="points-1" value="10">
+                            </div>
+                            <div class="select-wrapper">
+                                <select>
+                                    <option>Multiple Choice</option>
+                                    <option>True/False</option>
+                                    <option>Short Answer</option>
+                                </select>
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                            <button class="delete-question-btn"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="question-text-1">Question Text</label>
+                        <textarea id="question-text-1">Which of the following is NOT a renewable energy source?</textarea>
+                    </div>
+
+                    <div class="answer-options-section">
+                        <label>Answer Options</label>
+                        <div class="answer-option">
+                            <input type="radio" id="option1-q1" name="answer-q1" value="Solar Power" checked>
+                            <label for="option1-q1">Solar Power</label>
+                        </div>
+                        <div class="answer-option">
+                            <input type="radio" id="option2-q1" name="answer-q1" value="Wind Power">
+                            <label for="option2-q1">Wind Power</label>
+                        </div>
+                        <div class="answer-option">
+                            <input type="radio" id="option3-q1" name="answer-q1" value="Natural Gas">
+                            <label for="option3-q1">Natural Gas</label>
+                        </div>
+                        <div class="answer-option">
+                            <input type="radio" id="option4-q1" name="answer-q1" value="Hydroelectric Power">
+                            <label for="option4-q1">Hydroelectric Power</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="add-question-btn-container">
+                    <button class="add-question-btn"><i class="ri-add-line"></i> Add Question</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="quiz-footer">
+            <button class="nav-btn prev-btn"><i class="ri-arrow-left-s-line"></i> Prev</button>
+            <button class="nav-btn next-btn">Preview & Publish</button>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+    const addQuestionBtn = document.querySelector('.add-question-btn');
+    const questionsContainer = document.querySelector('.form-card.quiz-questions');
+    const questionTemplate = document.querySelector('.question-card');
+
+    let questionCounter = 1;
+
+    // Function to handle deleting a question
+    function handleDeleteQuestion(event) {
+        const questionCard = event.target.closest('.question-card');
+        if (questionCard) {
+            questionCard.remove();
+            updateQuestionNumbers();
+        }
+    }
+
+    // Function to update question numbers after add or delete
+    function updateQuestionNumbers() {
+        const questionCards = questionsContainer.querySelectorAll('.question-card');
+        questionCards.forEach((card, index) => {
+            const newQuestionNumber = index + 1;
+            card.querySelector('h3').textContent = `Question ${newQuestionNumber}`;
+            
+            // Update data attributes and input IDs/names
+            card.setAttribute('data-question-id', newQuestionNumber);
+            const pointsInput = card.querySelector('.points-input input');
+            pointsInput.id = `points-${newQuestionNumber}`;
+            pointsInput.setAttribute('name', `points-${newQuestionNumber}`);
+
+            const questionTextarea = card.querySelector('textarea');
+            questionTextarea.id = `question-text-${newQuestionNumber}`;
+            questionTextarea.setAttribute('name', `question-text-${newQuestionNumber}`);
+            
+            const radioInputs = card.querySelectorAll('.answer-option input[type="radio"]');
+            radioInputs.forEach((input, optionIndex) => {
+                input.setAttribute('name', `answer-q${newQuestionNumber}`);
+                input.id = `option${optionIndex + 1}-q${newQuestionNumber}`;
+                const label = card.querySelector(`label[for="option${optionIndex + 1}-q${newQuestionNumber}"]`);
+                if (label) {
+                     label.setAttribute('for', `option${optionIndex + 1}-q${newQuestionNumber}`);
+                }
+            });
+        });
+
+        questionCounter = questionCards.length;
+    }
+
+    // Add event listener to initial question delete button
+    questionsContainer.addEventListener('click', (event) => {
+        if (event.target.closest('.delete-question-btn')) {
+            handleDeleteQuestion(event);
+        }
+    });
+
+    // Add new question functionality
+    addQuestionBtn.addEventListener('click', () => {
+        questionCounter++;
+
+        const newQuestionCard = questionTemplate.cloneNode(true);
+        newQuestionCard.setAttribute('data-question-id', questionCounter);
+        newQuestionCard.querySelector('h3').textContent = `Question ${questionCounter}`;
+        
+        // Clear previous values for the new question
+        newQuestionCard.querySelector('textarea').value = '';
+        newQuestionCard.querySelector('.points-input input').value = 10;
+        
+        // Append the new question before the 'Add Question' button
+        addQuestionBtn.closest('.add-question-btn-container').before(newQuestionCard);
+        
+        // Re-update all question numbers and attributes
+        updateQuestionNumbers();
+    });
+
+    // Handle initial state setup
+    updateQuestionNumbers();
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --dark-bg: #1a1a2e;
+    --dark-card: #202038;
+    --dark-text: #e0e0e0;
+    --dark-text-light: #a0a0a0;
+    --purple: #8e44ad;
+    --purple-light: #9b59b6;
+    --orange: #f39c12;
+    --green: #2ecc71;
+    --red: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: var(--dark-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--purple-light);
+    margin-bottom: 20px;
+}
+
+.main-nav, .manage-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--dark-text-light);
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-item.active {
+    background-color: var(--purple);
+    color: #fff;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    background-color: var(--dark-bg);
+    color: #fff;
+}
+
+.manage-section span {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--dark-text-light);
+    margin-bottom: -10px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    position: relative;
+    width: 300px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    padding-left: 40px;
+    border: none;
+    background-color: var(--dark-card);
+    color: var(--dark-text);
+    border-radius: 8px;
+    outline: none;
+}
+
+.create-quiz-btn {
+    background-color: var(--purple);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dashboard-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.dashboard-header p {
+    color: var(--dark-text-light);
+    margin-left: 20px;
+    flex: 1;
+}
+
+.create-new-quiz-btn {
+    background-color: var(--purple);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: var(--dark-card);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.stat-card p {
+    color: var(--dark-text-light);
+    margin-bottom: 5px;
+}
+
+.stat-card h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.stat-card .positive {
+    color: var(--green);
+}
+
+.stat-card .negative {
+    color: var(--red);
+}
+
+/* Bottom Sections */
+.bottom-sections {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Recent Events */
+.recent-events {
+    background-color: var(--dark-card);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.recent-events h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.event-item:last-child {
+    border-bottom: none;
+}
+
+.event-icon {
+    font-size: 24px;
+    color: var(--purple);
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-details h4 {
+    font-weight: 500;
+}
+
+.event-details p {
+    font-size: 12px;
+    color: var(--dark-text-light);
+}
+
+.view-live-btn, .manage-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.view-live-btn {
+    background-color: var(--purple);
+    color: #fff;
+}
+
+.manage-btn {
+    background-color: var(--dark-bg);
+    color: var(--purple);
+}
+
+/* Top Students */
+.top-students {
+    background-color: var(--dark-card);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.top-students h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.student-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.student-rank {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-text-light);
+}
+
+.student-info {
+    flex: 1;
+}
+
+.student-info h4 {
+    font-weight: 500;
+}
+
+.student-info p {
+    font-size: 12px;
+    color: var(--dark-text-light);
+}
+
+.student-score {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--orange);
+}
+
+/* Recent Quizzes */
+.recent-quizzes h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.quiz-card {
+    background-color: var(--dark-card);
+    padding: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+}
+
+.quiz-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quiz-card-header h4 {
+    font-size: 18px;
+}
+
+.quiz-card-header i {
+    font-size: 20px;
+    color: var(--dark-text-light);
+}
+
+.quiz-meta {
+    font-size: 12px;
+    color: var(--dark-text-light);
+    margin-bottom: 15px;
+}
+
+.completion-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.completion-fill {
+    height: 100%;
+    background-color: var(--purple);
+}
+
+.completion-text {
+    font-size: 12px;
+    color: var(--dark-text-light);
+    text-align: right;
+}
+
+.create-new-quiz-card {
+    background-color: var(--dark-card);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px dashed var(--dark-text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    min-height: 200px;
+}
+
+.create-new-quiz-card i {
+    font-size: 40px;
+    color: var(--dark-text-light);
+    margin-bottom: 10px;
+}
+
+.create-new-quiz-card h4 {
+    font-weight: 500;
+}
+
+.create-new-quiz-card p {
+    font-size: 12px;
+    color: var(--dark-text-light);
+}
+</style>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">Quizzy</div>
+            <nav class="main-nav">
+                <a href="#" class="nav-item active"><i class="ri-dashboard-line"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="ri-question-answer-line"></i> Quizzes</a>
+                <a href="#" class="nav-item"><i class="ri-calendar-event-line"></i> Events</a>
+                <a href="#" class="nav-item"><i class="ri-group-line"></i> Students</a>
+            </nav>
+            <div class="manage-section">
+                <span>Manage</span>
+                <a href="#" class="nav-item"><i class="ri-settings-4-line"></i> Settings</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <button class="create-quiz-btn"><i class="ri-add-line"></i> Create Quiz</button>
+            </header>
+
+            <section class="dashboard-header">
+                <h2>Dashboard</h2>
+                <p>Welcome back, Sarah! Here's what's happening with your quizzes</p>
+                <button class="create-new-quiz-btn"><i class="ri-add-line"></i> Create New Quiz</button>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <p>Total Quizzes</p>
+                    <h3>2,543</h3>
+                    <span class="positive">+12.5%</span>
+                </div>
+                <div class="stat-card">
+                    <p>Active Events</p>
+                    <h3>2,543</h3>
+                    <span class="positive">+12.5%</span>
+                </div>
+                <div class="stat-card">
+                    <p>Students</p>
+                    <h3>2,543</h3>
+                    <span class="positive">+12.5%</span>
+                </div>
+                <div class="stat-card">
+                    <p>Avg. Completion</p>
+                    <h3>2,543</h3>
+                    <span class="negative">-12.5%</span>
+                </div>
+            </section>
+
+            <div class="bottom-sections">
+                <section class="recent-events">
+                    <h3>Recent Events</h3>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-icon"><i class="ri-flask-line"></i></div>
+                            <div class="event-details">
+                                <h4>Science Mid-term Quiz</h4>
+                                <p><i class="ri-time-line"></i> Today, 2:30 PM • 32 participants</p>
+                            </div>
+                            <button class="view-live-btn">View Live</button>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-icon"><i class="ri-calculator-line"></i></div>
+                            <div class="event-details">
+                                <h4>Mathematics Weekly Test</h4>
+                                <p><i class="ri-time-line"></i> Tomorrow, 10:00 AM • 28 participants</p>
+                            </div>
+                            <button class="manage-btn">Manage</button>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-icon"><i class="ri-history-line"></i></div>
+                            <div class="event-details">
+                                <h4>History Final Exam</h4>
+                                <p><i class="ri-time-line"></i> May 20, 9:00 AM • 45 participants</p>
+                            </div>
+                            <button class="manage-btn">Manage</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="top-students">
+                    <h3>Top Students</h3>
+                    <div class="student-list">
+                        </div>
+                </section>
+            </div>
+            
+            <section class="recent-quizzes">
+                <h3>Recent Quizzes</h3>
+                <div class="quiz-grid">
+                    <div class="create-new-quiz-card">
+                        <i class="ri-add-line"></i>
+                        <h4>Create New Quiz</h4>
+                        <p>Add questions, set time limits and more</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+    const studentsData = [
+        { rank: 1, name: 'Alex John', subject: 'Science', score: 950 },
+        { rank: 2, name: 'Emma Watson', subject: 'Mathematics', score: 920 },
+        { rank: 3, name: 'Michael Clark', subject: 'Physics', score: 980 },
+        { rank: 4, name: 'Sophia Green', subject: 'English', score: 890 },
+        { rank: 5, name: 'Lucia Wilde', subject: 'Science', score: 870 },
+    ];
+
+    const quizzesData = [
+        { title: 'Introduction to Biology', questions: 15, completions: 28, completionRate: 75 },
+        { title: 'Introduction to Biology', questions: 15, completions: 28, completionRate: 40 },
+        { title: 'Introduction to Biology', questions: 15, completions: 28, completionRate: 90 },
+    ];
+
+    const studentList = document.querySelector('.student-list');
+    const quizGrid = document.querySelector('.quiz-grid');
+
+    function renderStudents() {
+        studentList.innerHTML = '';
+        studentsData.forEach(student => {
+            const studentItem = document.createElement('div');
+            studentItem.classList.add('student-item');
+            studentItem.innerHTML = `
+                <div class="student-rank">${student.rank}</div>
+                <div class="student-info">
+                    <h4>${student.name}</h4>
+                    <p>${student.subject}</p>
+                </div>
+                <div class="student-score">${student.score}</div>
+            `;
+            studentList.appendChild(studentItem);
+        });
+    }
+
+    function renderQuizzes() {
+        quizGrid.innerHTML = '';
+        quizzesData.forEach(quiz => {
+            const quizCard = document.createElement('div');
+            quizCard.classList.add('quiz-card');
+            quizCard.innerHTML = `
+                <div class="quiz-card-header">
+                    <h4>${quiz.title}</h4>
+                    <i class="ri-arrow-right-line"></i>
+                </div>
+                <p class="quiz-meta">${quiz.questions} questions • ${quiz.completions} completions</p>
+                <div class="completion-bar">
+                    <div class="completion-fill" style="width: ${quiz.completionRate}%"></div>
+                </div>
+                <p class="completion-text">Completion Rate: ${quiz.completionRate}%</p>
+            `;
+            quizGrid.appendChild(quizCard);
+        });
+        
+        // Add the 'Create New Quiz' card at the end
+        const createCard = document.createElement('div');
+        createCard.classList.add('create-new-quiz-card');
+        createCard.innerHTML = `
+            <i class="ri-add-line"></i>
+            <h4>Create New Quiz</h4>
+            <p>Add questions, set time limits and more</p>
+        `;
+        quizGrid.appendChild(createCard);
+    }
+
+    renderStudents();
+    renderQuizzes();
+
+});
+    </script>
+</body>
+</html>

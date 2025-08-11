@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --dark-bg: #1a1a2e;
+    --dark-card: #202038;
+    --dark-text: #e0e0e0;
+    --dark-text-light: #a0a0a0;
+    --purple: #8e44ad;
+    --purple-light: #9b59b6;
+    --orange: #f39c12;
+    --green: #2ecc71;
+    --red: #e74c3c;
+    --light-border: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.create-quiz-container {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-btn {
+    color: var(--dark-text);
+    font-size: 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.header-text h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-text p {
+    font-size: 14px;
+    color: var(--dark-text-light);
+}
+
+.header-right button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.save-draft-btn {
+    background-color: var(--dark-card);
+    color: var(--purple-light);
+    border: 1px solid var(--purple-light);
+    margin-right: 10px;
+}
+
+.preview-btn {
+    background-color: var(--purple);
+    color: #fff;
+}
+
+/* Main Form Content */
+.quiz-form-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.form-card {
+    background-color: var(--dark-card);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.card-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--light-border);
+    padding-bottom: 15px;
+}
+
+.card-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card-header p {
+    font-size: 12px;
+    color: var(--dark-text-light);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: var(--dark-text-light);
+    margin-bottom: 8px;
+}
+
+input[type="text"], textarea, .select-wrapper select, .input-with-label input {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--dark-bg);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    color: var(--dark-text);
+    font-size: 14px;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group-inline .form-group {
+    flex: 1;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: none;
+    padding-right: 40px;
+}
+
+.select-wrapper i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dark-text);
+    pointer-events: none;
+}
+
+/* Quiz Settings */
+.quiz-settings .form-group {
+    margin-bottom: 25px;
+}
+
+.input-with-label {
+    display: flex;
+    align-items: center;
+}
+
+.input-with-label input {
+    width: 80px;
+    text-align: center;
+}
+
+.input-with-label span {
+    margin-left: 10px;
+    color: var(--dark-text-light);
+}
+
+.toggle-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.toggle-group label:first-child {
+    font-weight: 500;
+    color: var(--dark-text);
+    margin-bottom: 0;
+}
+
+.toggle-group p {
+    flex: 1;
+    font-size: 12px;
+    color: var(--dark-text-light);
+    margin-left: 10px;
+}
+
+/* The switch - from W3Schools */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light-border);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #fff;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--purple-light);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 20px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Footer Navigation */
+.quiz-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.prev-btn {
+    background-color: var(--dark-card);
+    color: var(--purple-light);
+}
+
+.next-btn {
+    background-color: var(--purple);
+    color: #fff;
+}
+</style>
+<body>
+    <div class="create-quiz-container">
+        <header class="quiz-header">
+            <div class="header-left">
+                <a href="#" class="back-btn"><i class="ri-arrow-left-line"></i></a>
+                <div class="header-text">
+                    <h1>Create New Quiz</h1>
+                    <p>Add questions, set answers and configure quiz settings</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="save-draft-btn">Save Draft</button>
+                <button class="preview-btn">Preview</button>
+            </div>
+        </header>
+
+        <main class="quiz-form-content">
+            <div class="form-card quiz-details">
+                <div class="card-header">
+                    <h2>Quiz Details</h2>
+                    <p>Basic information about your quiz</p>
+                </div>
+                <div class="form-group">
+                    <label for="quiz-title">Quiz Title</label>
+                    <input type="text" id="quiz-title" value="Introduction to Environmental Science">
+                </div>
+                <div class="form-group">
+                    <label for="quiz-description">Description</label>
+                    <textarea id="quiz-description">Test your knowledge about environmental science basics, including renewable energy, ecosystems, and sustainability.</textarea>
+                </div>
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="quiz-category">Category</label>
+                        <div class="select-wrapper">
+                            <select id="quiz-category">
+                                <option value="science">Science</option>
+                                <option value="math">Mathematics</option>
+                                <option value="history">History</option>
+                            </select>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quiz-difficulty">Difficulty Level</label>
+                        <div class="select-wrapper">
+                            <select id="quiz-difficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-card quiz-settings">
+                <div class="card-header">
+                    <h2>Quiz Settings</h2>
+                    <p>Configure how your quiz works</p>
+                </div>
+                <div class="form-group">
+                    <label for="time-limit">Time Limit</label>
+                    <div class="input-with-label">
+                        <input type="number" id="time-limit" value="15" min="1">
+                        <span>minutes</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="passing-score">Passing Score</label>
+                    <div class="input-with-label">
+                        <input type="number" id="passing-score" value="70" min="0" max="100">
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="toggle-group">
+                    <label>Randomize Questions</label>
+                    <p>Show questions in random order</p>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="toggle-group">
+                    <label>Immediate Results</label>
+                    <p>Show results for each question</p>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </main>
+
+        <footer class="quiz-footer">
+            <button class="nav-btn prev-btn"><i class="ri-arrow-left-s-line"></i> Prev</button>
+            <button class="nav-btn next-btn">Next <i class="ri-arrow-right-s-line"></i></button>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+    const form = document.querySelector('.quiz-form-content');
+    const saveDraftBtn = document.querySelector('.save-draft-btn');
+    const previewBtn = document.querySelector('.preview-btn');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    // Example function to handle form submission or saving
+    function handleSave() {
+        const quizTitle = document.getElementById('quiz-title').value;
+        const description = document.getElementById('quiz-description').value;
+        const category = document.getElementById('quiz-category').value;
+        const difficulty = document.getElementById('quiz-difficulty').value;
+        const timeLimit = document.getElementById('time-limit').value;
+        const passingScore = document.getElementById('passing-score').value;
+        const randomizeQuestions = document.querySelector('.toggle-group input[type="checkbox"]').checked;
+
+        const quizData = {
+            title: quizTitle,
+            description: description,
+            category: category,
+            difficulty: difficulty,
+            timeLimit: timeLimit,
+            passingScore: passingScore,
+            randomizeQuestions: randomizeQuestions
+        };
+
+        console.log('Quiz data saved:', quizData);
+        alert('Quiz details have been saved!');
+    }
+
+    saveDraftBtn.addEventListener('click', handleSave);
+
+    // Event listeners for navigation buttons (these would typically navigate to other pages)
+    prevBtn.addEventListener('click', () => {
+        alert('Navigating to the previous step...');
+        // In a real application, you would change the page or view here.
+    });
+
+    nextBtn.addEventListener('click', () => {
+        alert('Navigating to the next step (add questions)...');
+        // In a real application, you would validate the form and then navigate.
+    });
+
+    previewBtn.addEventListener('click', () => {
+        alert('Previewing the quiz...');
+    });
+});
+    </script>
+</body>
+</html>

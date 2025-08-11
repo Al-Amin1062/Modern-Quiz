@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quzzy</title>
+</head>
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  color: #b0b0b0;
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #7b46d7;
+  margin-bottom: 40px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: #b0b0b0;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #312a4d;
+  color: #ffffff;
+}
+
+.sidebar .manage-header {
+  padding: 15px 20px;
+  color: #7b46d7;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-top: 20px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #121212;
+}
+
+.quiz-details .quiz-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.quiz-details .back-btn {
+  background: none;
+  border: none;
+  color: #b0b0b0;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 20px;
+}
+.quiz-details .back-btn svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.quiz-details .quiz-info h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.quiz-details .quiz-info p {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.quiz-details .quiz-actions {	
+</style>
+<body>
+<div class="container">
+  <nav class="sidebar">
+    <div class="logo">Quizzy</div>
+    <ul class="nav-links">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#" class="active">Quizzes</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Students</a></li>
+      <li class="manage-header">Manage</li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+  <main class="content quiz-details">
+    <header class="quiz-header">
+      <button class="back-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 11H6.414l5.293-5.293a1.002 1.002 0 0 0-1.414-1.414L2.586 12l7.707 7.707a1.002 1.002 0 0 0 1.414-1.414L6.414 13H21a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/></svg></button>
+      <div class="quiz-info">
+        <h1>Introduction to Biology</h1>
+        <p>Basic concepts of biology for beginners</p>
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-secondary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0-1.41-1.41L18.37 7.59l3.75 3.75 1.41-1.41-3.75-3.75z"/></svg> Edit</button>
+        <button class="btn-secondary"><svg viewBox="0.00 0.00 24.00 24.00" fill="currentColor" stroke-width="0" transform="translate(0,0), scale(1)"><g><path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#292D32" d="M12 14.5C13.3807 14.5 14.5 13.3807 14.5 12C14.5 10.6193 13.3807 9.5 12 9.5C10.6193 9.5 9.5 10.6193 9.5 12C9.5 13.3807 10.6193 14.5 12 14.5Z"></path><path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#292D32" d="M16.5 18.5L14.31 16.31M9.7 7.69L7.5 5.5M16.5 5.5L14.31 7.69M9.7 16.31L7.5 18.5"></path><path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#292D32" d="M17.5 12C20.4853 12 23 14.1216 23 17V19C23 20 22 21 19 21H5C2 21 2 20 2 19V17C2 14.1216 4.51472 12 7.5 12"></path></g></svg> Share</button>
+        <button class="btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 12c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm-3 0V7l9 5-9 5v-5z"/></svg> Preview</button>
+      </div>
+    </header>
+
+    <section class="quiz-summary">
+      <div class="summary-card">
+        <p class="label">Total Completions</p>
+        <p class="value">28</p>
+      </div>
+      <div class="summary-card">
+        <p class="label">Completion Time</p>
+        <p class="value">12:45</p>
+      </div>
+      <div class="summary-card">
+        <p class="label">Average Score</p>
+        <p class="value">78.5%</p>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8m0 2a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6z"/><path d="M12 14a2 2 0 0 1 2-2v4a2 2 0 0 1-2-2z"/></svg>
+      </div>
+      <div class="summary-card">
+        <p class="label">Top Score</p>
+        <p class="value">95%</p>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+    </section>
+
+    <section class="recent-completions">
+      <div class="section-header">
+        <h2>Recent Completions</h2>
+        <p>Students who have recently completed this quiz</p>
+        <button class="view-all-btn">View All Results</button>
+      </div>
+      <table class="completions-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Score</th>
+            <th>Time Spent</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alex Johnson</td>
+            <td>85%</td>
+            <td>15:24</td>
+            <td>2 hours ago</td>
+          </tr>
+          <tr>
+            <td>Emma Wilson</td>
+            <td>92%</td>
+            <td>18:24</td>
+            <td>2 hours ago</td>
+          </tr>
+          <tr>
+            <td>Michael Cohen</td>
+            <td>92%</td>
+            <td>18:24</td>
+            <td>2 hours ago</td>
+          </tr>
+          <tr>
+            <td>Sophia Garcia</td>
+            <td>92%</td>
+            <td>18:24</td>
+            <td>2 hours ago</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="question-performance">
+      <div class="section-header">
+        <h2>Question Performance</h2>
+        <p>How students performed on each question</p>
+      </div>
+      <ul class="performance-list">
+        <li class="performance-item">
+          <p class="question-text">1. What is the basic unit of life?</p>
+          <span class="score">92%</span>
+        </li>
+        <li class="performance-item">
+          <p class="question-text">2. Which organelle is responsible for...?</p>
+          <span class="score">92%</span>
+        </li>
+        <li class="performance-item">
+          <p class="question-text">3. What is the process of cell division...?</p>
+          <span class="score">92%</span>
+        </li>
+        <li class="performance-item">
+          <p class="question-text">4. Which of the following is NOT a...?</p>
+          <span class="score">92%</span>
+        </li>
+        <li class="performance-item">
+          <p class="question-text">5. What is the main function of mito...?</p>
+          <span class="score">92%</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="share-quiz">
+      <h2>Share This Quiz</h2>
+      <p>Share this quiz with students or colleagues</p>
+      <button class="btn-primary share-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.48.3-2 .79l-4.17-2.48a2.99 2.99 0 0 0 0-1.22L16 7.92c.52.49 1.24.79 2 .79 2.07 0 3.75-1.68 3.75-3.75S20.07 1 18 1c-2.07 0-3.75 1.68-3.75 3.75 0 .65.18 1.26.49 1.79L9.5 9.83a3.01 3.01 0 0 0 0 4.34l6.99 4.01c-.31.53-.49 1.14-.49 1.79 0 2.07 1.68 3.75 3.75 3.75 2.07 0 3.75-1.68 3.75-3.75S20.07 16.08 18 16.08zm-6-5.76a1 1 0 0 1 0-1.68l4.15 2.47a1 1 0 0 1 0 1.68l-4.15-2.47z"/></svg> Share Quiz</button>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: white;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+/* Header Styles */
+header {
+    background-color: white;
+}
+
+.navbar {
+    max-width: 1920px;
+    width: 1440px;
+    height:65px;
+    background-color: #222;
+    box-shadow: 0 1px 5px rgba(0, 0, 2, 0.2);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.navbar .logo {
+    color: #fff;
+    font-size: 25px;
+    margin: 0 20px;
+}
+.nav_Container ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding-left: 0;
+    margin: 0;
+
+}
+.nav_Container ul li {
+    margin: 0px 17px;
+    position: relative;
+
+}
+.nav_Container a{
+    text-decoration: none;
+    color: #f2f2f2;
+}

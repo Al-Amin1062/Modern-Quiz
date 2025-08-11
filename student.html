@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Student dashboard</title>
+</head>
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  color: #b0b0b0;
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #7b46d7;
+  margin-bottom: 40px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: #b0b0b0;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #312a4d;
+  color: #ffffff;
+}
+
+.sidebar .manage-header {
+  padding: 15px 20px;
+  color: #7b46d7;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-top: 20px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #121212;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.btn-primary {
+  background-color: #7b46d7;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.student-directory {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.directory-header {
+  margin-bottom: 20px;
+}
+
+.directory-header h2 {
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.directory-header p {
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.directory-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  color: #b0b0b0;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+
+.tabs button.active {
+  color: #ffffff;
+  background-color: #333;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table thead tr {
+  border-bottom: 1px solid #333;
+}
+
+.students-table th,
+.students-table td {
+  padding: 15px;
+  text-align: left;
+  color: #e0e0e0;
+}
+
+.students-table th {
+  font-weight: normal;
+  color: #b0b0b0;
+}
+
+.students-table td {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+}
+
+.students-table td:first-child {
+  padding-left: 0;
+}
+
+.students-table .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.students-table .actions {
+  color: #b0b0b0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  text-align: right;
+}	
+</style>
+<body>
+
+<div class="container">
+  <nav class="sidebar">
+    <div class="logo">Quizzy</div>
+    <ul class="nav-links">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Quizzes</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#" class="active">Students</a></li>
+      <li class="manage-header">Manage</li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+
+  <main class="content students-page">
+    <header class="page-header">
+      <h1>Students</h1>
+      <button class="btn-primary">Invite Students</button>
+    </header>
+
+    <section class="student-directory">
+      <div class="directory-header">
+        <h2>Student Directory</h2>
+        <p>View and manage all your students</p>
+      </div>
+
+      <div class="directory-controls">
+        <div class="tabs">
+          <button class="tab active">All Students</button>
+          <button class="tab">10A</button>
+          <button class="tab">10B</button>
+        </div>
+        <input type="text" placeholder="Search students..." />
+        <select>
+          <option>Name</option>
+        </select>
+      </div>
+
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Quizzes Taken</th>
+            <th>Average Score</th>
+            <th>Last Active</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src="https://via.placeholder.com/30" alt="Student avatar" class="avatar" />
+              Alex Johnson
+            </td>
+            <td>10A</td>
+            <td>12</td>
+            <td>85%</td>
+            <td>2 hours ago</td>
+            <td class="actions">...</td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://via.placeholder.com/30" alt="Student avatar" class="avatar" />
+              Alex Johnson
+            </td>
+            <td>10A</td>
+            <td>12</td>
+            <td>85%</td>
+            <td>2 hours ago</td>
+            <td class="actions">...</td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://via.placeholder.com/30" alt="Student avatar" class="avatar" />
+              Alex Johnson
+            </td>
+            <td>10A</td>
+            <td>12</td>
+            <td>85%</td>
+            <td>2 hours ago</td>
+            <td class="actions">...</td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://via.placeholder.com/30" alt="Student avatar" class="avatar" />
+              Alex Johnson
+            </td>
+            <td>10A</td>
+            <td>12</td>
+            <td>85%</td>
+            <td>2 hours ago</td>
+            <td class="actions">...</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".directory-controls .tab");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove("active"));
+      // Add active class to the clicked tab
+      tab.classList.add("active");
+
+      // In a real application, you would filter the student data here
+      // based on the selected tab (e.g., 'All Students', '10A', '10B')
+      console.log(`Filtering for students in: ${tab.textContent}`);
+    });
+  });
+});
+</script>
+</body>
+</html>

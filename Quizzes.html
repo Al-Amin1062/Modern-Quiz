@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quizzes</title>
+</head>
+<style>
+  body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  color: #b0b0b0;
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #7b46d7;
+  margin-bottom: 40px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: #b0b0b0;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #312a4d;
+  color: #ffffff;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #121212;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.btn-primary {
+  background-color: #7b46d7;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.quiz-library {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.library-header {
+  margin-bottom: 20px;
+}
+
+.library-header h2 {
+  color: #ffffff;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  color: #b0b0b0;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+
+.tabs button.active {
+  color: #ffffff;
+  background-color: #333;
+}
+
+.quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.quiz-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.quiz-card:hover {
+  background-color: #252525;
+}
+
+.card-details h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.card-details .status {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.status.published {
+  background-color: #3e277a;
+  color: #ffffff;
+}
+
+.status.draft {
+  background-color: #946830;
+  color: #ffffff;
+}
+
+.card-details p {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  margin: 5px 0 0;
+}
+
+.card-actions button {
+  background-color: #333;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
+<body>
+
+
+
+<div class="container">
+  <nav class="sidebar">
+    <div class="logo">Quizzy</div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Quizzes</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Students</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <header class="page-header">
+      <h1>Quizzes</h1>
+      <button class="btn-primary">Create New Quiz</button>
+    </header>
+
+    <section class="quiz-library">
+      <div class="library-header">
+        <h2>Quiz Library</h2>
+        <div class="controls">
+          <div class="tabs">
+            <button class="tab active">All Quizzes</button>
+            <button class="tab">Published</button>
+            <button class="tab">Drafts</button>
+          </div>
+          <input type="text" placeholder="Search quizzes..." />
+          <select>
+            <option>All Categories</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="quiz-list">
+        <div class="quiz-card published">
+          <div class="card-details">
+            <h3>Introduction to Biology</h3>
+            <span class="status published">Published</span>
+            <p>15 questions • 20 min • 32 completions</p>
+          </div>
+          <div class="card-actions">
+            <button>View</button>
+            <button>⋮</button>
+          </div>
+        </div>
+
+        <div class="quiz-card draft">
+          <div class="card-details">
+            <h3>Chemistry Fundamentals</h3>
+            <span class="status draft">Draft</span>
+            <p>15 questions • 20 min • 32 completions</p>
+          </div>
+          <div class="card-actions">
+            <button>View</button>
+            <button>⋮</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tabs .tab");
+  const quizList = document.querySelector(".quiz-list");
+  const quizCards = quizList.querySelectorAll(".quiz-card");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove("active"));
+      // Add active class to the clicked tab
+      tab.classList.add("active");
+
+      // Filter quiz cards based on the tab clicked
+      const filter = tab.textContent.toLowerCase();
+      quizCards.forEach(card => {
+        if (filter === "all quizzes" || card.classList.contains(filter)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>
