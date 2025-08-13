@@ -1,35 +1,254 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>full page</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>full page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-<header>
+    <!--main---->
+    <header>
         <div class="navbar">
-            <div class="logo">Quizzy&nbsp</div>
-            <div class="nav_Container">
+            <div class="logo">Quizzy&nbsp;</div>
+            <div class="menu-icon" id="menu-toggle">&#9776;</div>
+            <div class="nav_Container" id="nav-menu">
                 <ul>
                     <li><a href="#home">Quiz</a></li>
                     <li><a href="#">Weekly Quiz</a></li>
-                       <li><a href="#">Rewards</a></li>
-                       <li><a href="#">About</a></li>
+                    <li><a href="#">Rewards</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+                <div class="topbutton">
+                    <a href="#" class="button1">sign in</a>
+                    <a href="#" class="button2">Register</a>
+                </div>
+            </div>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
 
-                       </ul>
-                       </div>
-                   <div class="topbutton">
-                       <button class="button"><a href="#">sign in</a></button>
-                       <button class="button"><a href="#">Register</a></button>
-                   </div>
-               
-           </div>
-           
-
-
-
-       </header>
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        });
+        </script>
+        <div class="mainbody">
+            <h1 class="learn">Learn,Quiz, <span>earn Rewards</span></h1>
+            <p class="join">Join thousands of students and teachers on the ultimate quiz platform. Test your knowledge,compete with peers, and win exciting rewards</p>
+            <div class="centerbutton">
+                <button class="get">Get Started</button>
+                <button class="expoler">Explore quizzes</button>
+            </div>
+            <div class="review-badge">
+                <div class="profile-pics">
+                    <img src="https://i.pravatar.cc/24?img=1" />
+                    <img src="https://i.pravatar.cc/24?img=2" />
+                    <img src="https://i.pravatar.cc/24?img=3" />
+                    <div class="stars">★★★★★</div>
+                    <span class="reviews-text">3000+ student join this week</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Expoler quiz catagoris -->
+    <div class="container">
+        <div class="sub_header">
+            <div class="categories-icon">
+                <span role="img" aria-label="Categories">📁</span> Categories
+            </div>
+            <h1>Explore <span class="highlight">Quiz Categories</span></h1>
+            <p>Discover quizzes across various subjects to test and expand your knowledge</p>
+        </div>
+        <div class="card-grid">
+            <div class="card science-tech">
+                <div class="icon">
+                    <span role="img" aria-label="Science">⚛️</span>
+                </div>
+                <div class="card-content">
+                    <h2>Science & Tech</h2>
+                    <p>Test your knowledge in science & tech with our challenging quizzes</p>
+                    <a href="#" class="explore-link">Explore Quizzes →</a>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="card mathematics">
+                <div class="icon">
+                    <span role="img" aria-label="Mathematics">✖️</span>
+                </div>
+                <div class="card-content">
+                    <h2>Mathematics</h2>
+                    <p>Test your knowledge in mathematics with our challenging quizzes</p>
+                    <a href="#" class="explore-link">Explore Quizzes →</a>
+                </div>
+            </div>
+            <div class="card chemistry">
+                <div class="icon">
+                    <span role="img" aria-label="Chemistry">🧪</span>
+                </div>
+                <div class="card-content">
+                    <h2>Chemistry</h2>
+                    <p>Test your knowledge in chemistry with our challenging quizzes</p>
+                    <a href="#" class="explore-link">Explore Quizzes →</a>
+                </div>
+            </div>
+            <div class="card biology">
+                <div class="icon">
+                    <span role="img" aria-label="Biology">🧬</span>
+                </div>
+                <div class="card-content">
+                    <h2>Biology</h2>
+                    <p>Test your knowledge in biology with our challenging quizzes</p>
+                    <a href="#" class="explore-link">Explore Quizzes →</a>
+                </div>
+            </div>
+            <div class="card general-knowledge">
+                <div class="icon">
+                    <span role="img" aria-label="General Knowledge">🌐</span>
+                </div>
+                <div class="card-content">
+                    <h2>General Knowledge</h2>
+                    <p>Test your knowledge in general knowledge with our challenging quizzes</p>
+                    <a href="#" class="explore-link">Explore Quizzes →</a>
+                </div>
+            </div>
+            <div class="card current-affairs">
+                <div class="icon">
+                    <span role="img" aria-label="Current Affairs">📰</span>
+                </div>
+                <div class="card-content">
+                    <h2>Current Affairs</h2>
+                    <p>Test your knowledge in current affairs with our challenging quizzes</p>
+                    <a href="#" class="explore-link">Explore Quizzes →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- why quizzy ----------------------------->
+    <section class="container1">
+        <div class="whyquizzy">
+            <div class="features-label">
+                <span role="img" aria-label="Star">⭐</span> Features
+            </div>
+            <h1>Why <span class="highlight">Quizzy</span></h1>
+            <p>Discover quizzes across various subjects to test and expand your knowledge</p>
+        </div>
+        <div class="whycard-grid">
+            <div class="card2">
+                <div class="icon2">
+                    <span role="img" aria-label="Code">💻</span>
+                </div>
+                <h3>Personalized Learning</h3>
+                <p>Adaptive quizzes that adjust to your knowledge level and learning pace</p>
+            </div>
+            <div class="card2">
+                <div class="icon2">
+                    <span role="img" aria-label="Gift">🎁</span>
+                </div>
+                <h3>Reward System</h3>
+                <p>Earn points, badges, and real rewards for your achievements</p>
+            </div>
+            <div class="card2">
+                <div class="icon2">
+                    <span role="img" aria-label="Teacher">🧑‍🏫</span>
+                </div>
+                <h3>Teacher Dashboard</h3>
+                <p>Comprehensive tools for educators to create and manage quizzes</p>
+            </div>
+            <div class="card2">
+                <div class="icon2">
+                    <span role="img" aria-label="Chart">📊</span>
+                </div>
+                <h3>Progress Tracking</h3>
+                <p>Adaptive quizzes that adjust to your knowledge level and learning pace</p>
+            </div>
+            <div class="card2">
+                <div class="icon2">
+                    <span role="img" aria-label="Trophy">🏆</span>
+                </div>
+                <h3>Competitive Leaderboards</h3>
+                <p>Compete with peers and climb the ranks in various categories</p>
+            </div>
+            <div class="card2">
+                <div class="icon2">
+                    <span role="img" aria-label="Mobile Phone">📱</span>
+                </div>
+                <h3>Mobile Friendly</h3>
+                <p>Access quizzes anytime, anywhere on any device</p>
+            </div>
+        </div>
+    </section>
+    <!-- ready to content -------------->
+    <div class="startready">
+        <div class="containerready">
+            <div class="readycontent-left">
+                <h1>Ready to Start Your Quiz Journey?</h1>
+                <p>Join thousands of students and teachers. Sign up today and get access to all features</p>
+                <div class="buttons">
+                    <button class="btn primary">Create Account</button>
+                    <button class="btn secondary">Explore Quizzes</button>
+                </div>
+            </div>
+            <div class="readycontent-right">
+                <div class="placeholder-box"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer ------------------------->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h2 class="footer-logo">Quizzy</h2>
+                <p>The ultimate quiz platform for students and teachers. Learn, compete, and earn rewards</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section teachers">
+                <h3>For Teachers</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contacts">
+                <h3>Contacts us</h3>
+                <ul>
+                    <li><a href="mailto:contact@company.com"><i class="fas fa-envelope"></i> contact@company.com</a></li>
+                    <li><a href="tel:4146875892"><i class="fas fa-phone"></i> (414) 687-5892</a></li>
+                    <li><a href="https://www.google.com/maps" target="_blank"><i class="fas fa-map-marker-alt"></i> 794 Mcallister St<br>San Francisco, 94102</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 StuQuiz</p>
+            <div class="footer-links-bottom">
+                <p>All Rights Reserved | <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

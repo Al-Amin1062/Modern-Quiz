@@ -6,46 +6,909 @@
 }
 
 body {
-    color: white;
-    max-width: 1920px;
-    margin: 0 auto;
-}
-/* Header Styles */
-header {
-    background-color: white;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
 }
 
-.navbar {
-    max-width: 1920px;
-    width: 1440px;
-    height:65px;
-    background-color: #222;
-    box-shadow: 0 1px 5px rgba(0, 0, 2, 0.2);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+/* Header Styles */
+header {
+
+    /*background: linear-gradient(to right, #4a006c, #8a2be2, #ff5733);*/
 }
+
+/* Base Styles (for all screen sizes) */
+
+
+.navbar {
+    width: 100%;
+    min-height: 50px;
+    background-color: #000;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    /*justify-content: space-between;*/
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
 .navbar .logo {
     color: #fff;
     font-size: 25px;
-    margin: 0 20px;
+    font-weight: 700;
+    flex: 1;
 }
+
+.nav_Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* এই লাইনটি যদি থাকে, তবে আপাতত মন্তব্য করুন বা সরিয়ে দিন */
+    flex: 1.5;
+}
+
 .nav_Container ul {
     list-style: none;
     display: flex;
-    gap: 8px;
+    /*gap: 8px;*/
     align-items: center;
-    padding-left: 0;
-    margin: 0;
-
+    /*padding-left: 0;*/
+    /*margin: 0;*/
+    /* এই লাইনটি যোগ করুন */
+    justify-content: center;
+    /*flex-grow: 1; */
 }
+
 .nav_Container ul li {
-    margin: 0px 17px;
+    margin: 0px 10px;
     position: relative;
-
 }
-.nav_Container a{
+
+.nav_Container a {
     text-decoration: none;
     color: #f2f2f2;
+    font-weight: 600;
+}
+
+.topbutton {
+    display: flex;
+    gap: 10px;
+    /*margin-left: 20px;*/
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* বাকি কোড একই থাকবে */
+
+.topbutton {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.topbutton a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.topbutton .button1 {
+    background-color: #ffffff;
+    color: #111;
+}
+
+.topbutton .button2 {
+    background: linear-gradient(to left, #5813C1, #C45037, #8E327C);
+    color: #fff;
+}
+
+/* Hamburger menu icon, hidden by default on desktop */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav_Container a:hover {
+    background-color: ;
+    border-radius: 4px;
+    color: #f4ecc;
+}
+
+/* ------------------------------------------- */
+/* Mobile Screen Styles */
+/* ------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .nav_Container {
+        display: none;
+        /* Hide the menu by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        /* Position below the navbar */
+        left: 0;
+        width: 100%;
+        background-color: #000;
+        padding: 10px 0;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* When the menu is active, display it */
+    .nav_Container.active {
+        display: flex;
+    }
+
+    .nav_Container ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav_Container ul li {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .topbutton {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .button1,
+    .button2 {
+        width: 80%;
+        /* Adjusted width for better mobile layout */
+    }
+
+    .menu-icon {
+        display: block;
+        /* Show hamburger icon on mobile */
+    }
+}
+
+
+/* Base Styles (unchanged) */
+.mainbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(to right, #4a006c, #8a2be2, #ff5733);
+}
+
+.mainbody h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    /* Changed to white for better visibility on a dark background */
+}
+
+.learn span {
+    background: linear-gradient(to left, #5813C1, #8E327C, #C45037);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.mainbody p {
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    padding: 0 15px;
+    /* Added padding for small screens */
+}
+
+.centerbutton {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Allows buttons to wrap on small screens */
+    gap: 10px;
+    /* Spacing between buttons */
+}
+
+.centerbutton button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    /* Added cursor pointer */
+}
+
+.get {
+    background: linear-gradient(to left, #5813C1, #8E327C, #C45037);
+    color: #fff;
+    /* Changed button text to white for contrast */
+}
+
+.profile-pics {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2rem;
+    justify-content: center;
+    /* Centered the profile pics */
+}
+
+.profile-pics img {
+    border-radius: 50%;
+    margin-left: -8px;
+    border: 2px solid white;
+    width: 40px;
+    /* Set a default size for the images */
+    height: 40px;
+    object-fit: cover;
+}
+
+.profile-pics img:first-child {
+    margin-left: 0;
+}
+
+.stars {
+    color: gold;
+    font-size: 14px;
+}
+
+.reviews-text {
+    font-size: 13px;
+    color: #fff;
+}
+
+/* ------------------------------------------- */
+/* Mobile Screen Styles */
+/* ------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .mainbody {
+        min-height: auto;
+        /* Adjust height for mobile */
+        padding: 50px 10px;
+        /* Add padding to top and bottom */
+    }
+
+    .mainbody h1 {
+        font-size: 2rem;
+        /* Reduced font size for mobile */
+    }
+
+    .mainbody p {
+        font-size: 0.9rem;
+        /* Reduced paragraph font size */
+        max-width: 90%;
+        /* Ensures paragraph fits within the screen */
+    }
+
+    .centerbutton {
+        flex-direction: column;
+        /* Buttons will stack vertically */
+        align-items: center;
+        /* Center the buttons */
+        width: 80%;
+        /* Adjust width for better fit */
+    }
+
+    .centerbutton button {
+        width: 100%;
+        /* Buttons take up full width of their container */
+        margin: 5px 0;
+        /* Add vertical margin between buttons */
+    }
+
+    .profile-pics {
+        margin-top: 1.5rem;
+        /* Reduced top margin */
+        flex-wrap: wrap;
+        /* Allows the items to wrap if they don't fit */
+    }
+
+    .reviews-text {
+        font-size: 12px;
+        /* Further reduce font size for better fit */
+    }
+}
+
+/*expoler quiz catagryes*/
+
+/* Base Styles (unchanged) */
+.container {
+    max-width: auto;
+    height: 100vh;
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    background-color: #000;
+}
+
+.sub_header {
+    margin-bottom: 50px;
+}
+
+.categories-icon {
+    background-color: #333;
+    color: #a0a0a0;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.sub_header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #ffffff;
+}
+
+.sub_header .highlight {
+    color: #a05cff;
+}
+
+.sub_header p {
+    color: #a0a0a0;
+    font-size: 1.1rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #241F29;
+    max-width: 500px;
+}
+
+.icon {
+    font-size: 40px;
+    flex-shrink: 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-content h2 {
+    margin: 0;
+    color: black;
+}
+
+.card-content p {
+    margin: 0;
+    color: #111;
+}
+
+.explore-link {
+    text-decoration: none;
+    color: #5813C1;
+    font-weight: bold;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+}
+
+.card p {
+    color: #a0a0a0;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.explore-link {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card.science-tech .explore-link {
+    color: #6c5ce7;
+}
+
+.card.mathematics .explore-link {
+    color: #00b894;
+}
+
+.card.chemistry .explore-link {
+    color: #a05cff;
+}
+
+.card.biology .explore-link {
+    color: #e84393;
+}
+
+.card.general-knowledge .explore-link {
+    color: #ffbe76;
+}
+
+.card.current-affairs .explore-link {
+    color: #e17055;
+}
+
+/* ------------------------------------------- */
+/* Mobile Screen Styles */
+/* ------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+        /* ছোট স্ক্রিনের জন্য প্যাডিং কমানো */
+        height: auto;
+        /* কন্টেন্ট অনুযায়ী উচ্চতা বাড়বে */
+    }
+
+    .sub_header h1 {
+        font-size: 2rem;
+        /* হেডিং এর ফন্ট সাইজ কমানো */
+    }
+
+    .sub_header p {
+        font-size: 1rem;
+        /* প্যারাগ্রাফ এর ফন্ট সাইজ কমানো */
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        /* ছোট স্ক্রিনে একটি কলামে সব কার্ড আসবে */
+        gap: 15px;
+        /* কার্ডগুলোর মাঝে ফাঁকা জায়গা কমানো */
+    }
+
+    .card {
+        flex-direction: column;
+        /* আইকন এবং টেক্সট উলম্বভাবে সাজানো */
+        text-align: center;
+        /* ভেতরের লেখাগুলো মাঝখানে আসবে */
+        gap: 10px;
+        /* আইকন এবং টেক্সটের মাঝে ফাঁকা কমানো */
+    }
+
+    .card .icon {
+        font-size: 1.5rem;
+        /* আইকনের সাইজ কমানো */
+        margin-bottom: 0;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+        /* কার্ড হেডিং এর ফন্ট সাইজ কমানো */
+        margin: 5px 0;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+        /* কার্ড প্যারাগ্রাফ এর ফন্ট সাইজ কমানো */
+    }
+}
+
+
+/*why quizzy-----------------------------------------*/
+
+/* Base Styles (for all screen sizes) */
+.container1 {
+    max-width: auto-fit;
+    margin: 0;
+    padding: 40px;
+    text-align: center;
+    background-color: #000;
+}
+
+.whyquizzy {
+    margin-bottom: 50px;
+}
+
+.features-label {
+    background-color: #e6e6e6;
+    color: #555;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.whyquizzy h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #fff;
+}
+
+
+.whyquizzy .highlight {
+    color: #a05cff;
+}
+
+.whyquizzy p {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.whycard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.card2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px;
+    border-radius: 8px;
+    background: #241F20;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.icon2 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.card2 h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.card2 p {
+    margin: 10px 0 0;
+    color: #fff;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    .container1 {
+        padding: 20px;
+    }
+
+    .whyquizzy h1 {
+        font-size: 2.5rem;
+    }
+
+    .whyquizzy p {
+        font-size: 1rem;
+    }
+
+    .whycard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card2 {
+        padding: 15px;
+    }
+
+    .icon2 {
+        font-size: 2rem;
+    }
+
+    .card2 h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/*ready to content----------------------*/
+
+.startready {
+    background-color: #000;
+    width: 100%;
+    height: auto;
+    /* Changed height to auto for responsiveness */
+    padding: 20px 0;
+    /* Added vertical padding */
+}
+
+.containerready {
+    height: auto;
+    /* Changed height to auto for responsiveness */
+    width: 90%;
+    /* Adjusted width for better mobile fit */
+    margin: 20px auto;
+    /* Centered the container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    /* Reduced padding for mobile */
+    border-radius: 20px;
+    color: white;
+    background-image: linear-gradient(to right, #4a006c, #8a2be2, #ff5733);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.readycontent-left {
+    flex: 1;
+}
+
+.readycontent-left h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.readycontent-left p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows buttons to wrap on small screens */
+    gap: 15px;
+    /* Added gap between buttons */
+}
+
+.buttons .btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn.primary {
+    background-color: #fff;
+    color: #4a006c;
+}
+
+.btn.primary:hover {
+    background-color: #f0f0f0;
+}
+
+.btn.secondary {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #ffffff;
+}
+
+.btn.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.readycontent-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder-box {
+    width: 350px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    border-radius: 15px;
+}
+
+/* ------------------------------------------- */
+/* Mobile Screen Styles */
+/* ------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .containerready {
+        flex-direction: column;
+        /* Stacks content vertically */
+        text-align: center;
+        /* Centers text for mobile */
+        padding: 20px;
+        /* Further reduced padding */
+    }
+
+    .readycontent-left {
+        margin-bottom: 20px;
+        /* Adds space below the text */
+    }
+
+    .readycontent-left h1 {
+        font-size: 2rem;
+        /* Reduces heading font size */
+    }
+
+    .readycontent-left p {
+        font-size: 1rem;
+        /* Reduces paragraph font size */
+    }
+
+    .buttons {
+        flex-direction: column;
+        /* Stacks buttons vertically */
+        align-items: center;
+        /* Centers the buttons */
+    }
+
+    .buttons .btn {
+        width: 100%;
+        /* Buttons take full width */
+        margin: 5px 0;
+        /* Adds vertical margin between buttons */
+    }
+
+    .readycontent-right {
+        width: 100%;
+        /* Ensures the right content block takes full width */
+    }
+
+    .placeholder-box {
+        width: 100%;
+        /* Placeholder box takes full width */
+        height: 200px;
+        /* Reduced height for mobile */
+        margin-top: 20px;
+    }
+}
+
+/*Footer------------------*/
+
+footer {
+    background-color: #000;
+    padding: 60px 0;
+    border-top: 1px solid #999;
+    width: 100%;
+
+
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 30px;
+}
+
+.footer-section:last-child {
+    margin-right: 0;
+}
+
+.footer-logo {
+    color: #8a2be2;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: #8a2be2;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #fff;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section li {
+    margin-bottom: 15px;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-section a:hover {
+    color: #fff;
+}
+
+.footer-section a i {
+    margin-right: 10px;
+    color: #8a2be2;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-links-bottom a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.footer-links-bottom a:hover {
+    text-decoration: underline;
+    color: #fff;
 }
